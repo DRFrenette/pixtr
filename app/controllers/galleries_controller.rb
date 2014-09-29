@@ -1,11 +1,19 @@
 class GalleriesController < ApplicationController
   def index
+    @galleries = Gallery.all
     render :index
   end
 
   def new
     @gallery = Gallery.new
     render :new
+  end
+  def show
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def edit
+    @gallery = Gallery.find(params[:id])
   end
 
   def create
