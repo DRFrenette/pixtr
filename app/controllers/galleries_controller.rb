@@ -17,11 +17,8 @@ class GalleriesController < ApplicationController
   end
 
   def update
-    @gallery = Gallery.find(params[:id])
-    @gallery.update(
-      name: params[:gallery][:name],
-      description: params[:gallery][:description]
-    )
+    gallery = Gallery.find(params[:id])
+    gallery.update(gallery_params)
 
     redirect_to "/"
   end
@@ -34,11 +31,17 @@ class GalleriesController < ApplicationController
   end
   
   def create
-    Gallery.create(
-    name: params[:gallery][:name],
-    description: params[:gallery][:description]
-    )
+    # protected from mass assignment until attributes are whitelisted
+    Gallery.create(gallery_params)
+    #name: params[:gallery][:name],
+    #description: params[:gallery][:description]
 
     redirect_to "/"
+  end
+
+  private
+
+  def gallery_params
+    gallery_params = params.require(:gallery).permit(:name, :description)
   end
 end

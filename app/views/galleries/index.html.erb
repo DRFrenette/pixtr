@@ -10,7 +10,8 @@
   </a> 
   - 
   <%= gallery.description %></li>
-  <a href="/galleries/<%= gallery.id %>/edit">edit</a>
+  <!--<a href="/galleries/<%= gallery.id %>/edit">edit</a>-->
+  <%= link_to "edit", "/galleries/#{gallery.id}/edit" %>
   <form action="/galleries/<%= gallery.id %>" method="POST">
 
     <input type="hidden" name="authenticity_token"
