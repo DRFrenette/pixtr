@@ -32,11 +32,11 @@ class GalleriesController < ApplicationController
   
   def create
     # protected from mass assignment until attributes are whitelisted
-    Gallery.create(gallery_params)
+    gallery = Gallery.create(gallery_params)
     #name: params[:gallery][:name],
     #description: params[:gallery][:description]
 
-    redirect_to "/"
+    redirect_to gallery_path(gallery)
   end
 
   private
