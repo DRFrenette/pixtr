@@ -17,10 +17,13 @@ class GalleriesController < ApplicationController
   end
 
   def update
-    gallery = Gallery.find(params[:id])
-    gallery.update(gallery_params)
+    @gallery = Gallery.find(params[:id])
 
-    redirect_to "/"
+    if @gallery.update(gallery_params)
+      redirect_to gallery_path(@gallery)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -32,11 +35,14 @@ class GalleriesController < ApplicationController
   
   def create
     # protected from mass assignment until attributes are whitelisted
-    gallery = Gallery.create(gallery_params)
+    @gallery = Gallery.new(gallery_params)
     #name: params[:gallery][:name],
     #description: params[:gallery][:description]
-
-    redirect_to gallery_path(gallery)
+    if @gallery.save
+      redirect_to gallery_path(@gallery)
+    else
+      render :new
+    end
   end
 
   private
