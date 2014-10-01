@@ -9,6 +9,10 @@
    
     <%= link_to "Edit", edit_gallery_path(gallery) %>
 
-  <%= gallery.description %></li>
+    <%= gallery.description %></li>
+
+    <%= form_for gallery, method: :delete do |form| %>
+      <%= form.submit "Delete" %>
     <% end %>
+  <% end %>
 </ul>
