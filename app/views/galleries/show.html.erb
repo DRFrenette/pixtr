@@ -9,8 +9,5 @@
     <li><%= image_tag image.url %>
   <%= link_to image.name, gallery_image_path(@gallery,image) %>
   </li> <% end %>
-  <% @gallery.images.each do |image| %>
-    <%= button_to "delete", @image, :method => :delete %>
-    <% form.submit "yea" %>
-</ul>
 
+   

@@ -22,10 +22,11 @@ class ImagesController < ApplicationController
   end
  
   def destroy
-    @image = Image.find(params[:id])
+    @gallery = Gallery.find(params[:gallery_id])
+    @image = @gallery.images.find(params[:id])
     @image.destroy
 
-    redirect_to gallery_path
+    redirect_to root_path
   end
  
   def edit

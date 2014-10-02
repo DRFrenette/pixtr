@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :galleries do
-    resources :images, only: [:show, :new, :create, :edit, :update]
+    resources :images, only: [:show, :new, :create, :edit, :update, :destroy]
   end
  # get "/" => "galleries#index"
  # get "/galleries/new" => "galleries#new"
