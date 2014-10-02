@@ -1,4 +1,4 @@
-<h2> This is a page for the<%= @gallery.name %></h2> 
+<h2> This is a page for the <%= @gallery.name %> gallery</h2> 
 
 <p><%= @gallery.description %></p>
 
@@ -7,6 +7,10 @@
 <ul>
   <% @gallery.images.each do |image| %>
     <li><%= image_tag image.url %>
-    <%= link_to image.name, gallery_image_path(@gallery,image) %> </li>
-  <% end %>
+  <%= link_to image.name, gallery_image_path(@gallery,image) %>
+  </li> <% end %>
+  <% @gallery.images.each do |image| %>
+    <%= button_to "delete", @image, :method => :delete %>
+    <% form.submit "yea" %>
 </ul>
+
