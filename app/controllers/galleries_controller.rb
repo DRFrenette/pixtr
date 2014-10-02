@@ -1,23 +1,24 @@
 class GalleriesController < ApplicationController
   def index
-    @galleries = Gallery.all
+    @galleries = current_user.galleries.all
     render :index
   end
 
   def new
-    @gallery = Gallery.new
-    render :new
+    @gallery = current_user.galleries.new
+   # @gallery = Gallery.new
+   # render :new
   end
   def show
-    @gallery = Gallery.find(params[:id])
+    @gallery = load_gallery_from_url
   end
 
   def edit
-    @gallery = Gallery.find(params[:id])
+    @gallery = load_gallery_from_url
   end
 
   def update
-    @gallery = Gallery.find(params[:id])
+    @gallery = load_gallery_from_url
 
     if @gallery.update(gallery_params)
       redirect_to gallery_path(@gallery)
@@ -27,7 +28,7 @@ class GalleriesController < ApplicationController
   end
 
   def destroy
-    gallery = Gallery.find(params[:id])
+    gallery = load_gallery_from_url
     gallery.destroy
 
     redirect_to root_path
@@ -35,7 +36,7 @@ class GalleriesController < ApplicationController
   
   def create
     # protected from mass assignment until attributes are whitelisted
-    @gallery = Gallery.new(gallery_params)
+    @gallery = current_user.galleries.new(gallery_params)
     #name: params[:gallery][:name],
     #description: params[:gallery][:description]
     if @gallery.save
@@ -49,5 +50,9 @@ class GalleriesController < ApplicationController
 
   def gallery_params
     gallery_params = params.require(:gallery).permit(:name, :description)
+  end
+  
+  def load_gallery_from_url
+    current_user.galleries.find(params[:id])
   end
 end
