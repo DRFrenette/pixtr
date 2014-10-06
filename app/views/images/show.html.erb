@@ -12,7 +12,9 @@
   
 <ul><div>
 <% @image.comments.each do |comment| %>
-    <li> <%=comment.user.email %> - <%= comment.body %> </li>
+  <li> <%=comment.user.email %> - <%= comment.body %>
+      <%= time_ago_in_words comment.created_at %> ago
+  </li>
 </ul></div>
 <% end %>
 
