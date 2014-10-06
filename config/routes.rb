@@ -7,11 +7,8 @@ Rails.application.routes.draw do
   resources :galleries do
     resources :images, only: [:show, :new, :create, :edit, :update, :destroy]
   end
- # get "/" => "galleries#index"
- # get "/galleries/new" => "galleries#new"
- # post "/galleries" => "galleries#create"
- # get "/galleries/:id" => "galleries#show"
- # get "/galleries/:id/edit" => "galleries#edit"
- # patch "/galleries/:id" => "galleries#update"
- # delete "/galleries/:id" => "galleries#destroy"
+
+  resources :images, only: [] do
+    resources :comments, only: [:create]
+  end
 end

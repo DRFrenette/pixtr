@@ -2,6 +2,21 @@
 
 <%= image_tag @image.url %>
 
+<%= form_for [@image, @comment] do |form| %>
+<%= render "error_messages", target: @comment %>
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+  <%= form.submit %>
+<% end %>
+
+  
+<ul><div>
+<% @image.comments.each do |comment| %>
+    <li> <%=comment.user.email %> - <%= comment.body %> </li>
+</ul></div>
+<% end %>
+
+
 <form action="/galleries/<%= @gallery.id %>/images/<%= @image.id %>" method="POST">
       <input type="hidden" name="_method" value="delete"/>
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
