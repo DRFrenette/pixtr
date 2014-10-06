@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @image = Image.find(params[:image_id])
     @comment = @image.comments.new(comments_params)
-    @comments = @image.comments
+    @comments = @image.comments.all
     @gallery = @image.gallery
     if @comment.save 
       redirect_to gallery_image_path(@gallery, @image)
