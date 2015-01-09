@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<h1> <%=link_to "Pixtr", root_path %> </h1>
+<h1> </h1>
 
 <% flash.each do |name,msg| %>
   <% if msg.is_a?(String) %>
@@ -18,6 +18,7 @@
 <% end %>
 
 <% if signed_in? %>
+        <%=link_to "Pixtr", root_path %>
         <%= link_to "Groups", groups_path %>
         <%= link_to "Galleries", galleries_path %> |
         <%= link_to "Sign out", session_path, method: :delete %>

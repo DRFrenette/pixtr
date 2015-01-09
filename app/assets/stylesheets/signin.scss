@@ -1,0 +1,9 @@
+.header {
+  @include outer-container;
+  @include clearfix;
+  text-align: center;
+
+  .sign-up {
+    @include outer-container;
+  }
+}
