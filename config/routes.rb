@@ -7,11 +7,13 @@ Rails.application.routes.draw do
     resources :group_memberships, only: [:create, :destroy]
   end
 
+
   resources :galleries do
     resources :images, only: [:show, :new, :create, :edit, :update, :destroy]
   end
 
   resources :images, only: [] do
     resources :comments, only: [:create]
+    resources :likes, only: [:create]
   end
 end

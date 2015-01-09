@@ -2,6 +2,8 @@
 
 <%= image_tag @image.url %>
 
+<%= button_to "Like", image_likes_path(@image) %>
+
 <%= form_for [@image, @comment] do |form| %>
 
 <%= render "error_messages", target: @comment %>
