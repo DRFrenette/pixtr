@@ -1,2 +1,7 @@
 <h2>Welcome to the <%= @group.name %> group! </h2>
+
 <p><%= @group.description %></p>
+
+<ul>
+  <%= render @members %>
+</ul>

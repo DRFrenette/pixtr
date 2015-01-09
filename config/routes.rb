@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root "galleries#index"
 
   resources :users, only: [:new, :create]
-  resources :groups, only: [:index, :new, :create, :show]
+  resources :groups, only: [:index, :new, :create, :show] do
+    resources :group_memberships, only: [:create]
+  end
 
   resources :galleries do
     resources :images, only: [:show, :new, :create, :edit, :update, :destroy]
