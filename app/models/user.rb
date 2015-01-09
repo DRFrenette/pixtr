@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :liked_images, through: :likes, source: :image
 
   validates :email, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
   def membership_for(group)
