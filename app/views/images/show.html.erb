@@ -2,7 +2,7 @@
 
 <%= image_tag @image.url %>
 
-<%= button_to "Like", image_likes_path(@image) %>
+<%= render "like_button", image: @image %>
 
 <%= form_for [@image, @comment] do |form| %>
 
