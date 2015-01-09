@@ -1,0 +1,5 @@
+<p>This image has <%= @image.likes.count %> likes</p>
+<p>These people like it:</p>
+<% @likers.each do |liker| %>
+  <p><%= liker.email %></p>
+<% end %>

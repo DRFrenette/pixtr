@@ -3,7 +3,8 @@
 <%= image_tag @image.url %>
 
 <div>
-  <p>This image has <%= @image.likes.count %> likes</p>
+  <%= render "like_stats", image: @image, liker: @liker %>
+</div>
 
 <%= render "like_button", image: @image %>
 
