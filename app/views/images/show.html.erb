@@ -2,14 +2,18 @@
 
 <%= image_tag @image.url %>
 
+<%= button_to "Delete Image", gallery_image_path, method: :delete %>
+
 <div>
-  <%= render "like_stats", image: @image, liker: @liker %>
+  <%= render "group_check_boxes", image: @image %>
 </div>
 
-<%= render "like_button", image: @image %>
+<div>
+  <%= render "like_stats", image: @image, liker: @liker %>
+  <%= render "like_button", image: @image %>
+</div>
 
 <%= form_for [@image, @comment] do |form| %>
-
 <%= render "error_messages", target: @comment %>
   <%= form.label :body, "Comment" %>
   <%= form.text_area :body %>
@@ -21,5 +25,3 @@
     <%= render "comments/comment", comment: comment_from_each %>
   <% end %>
 </ul>
-
-<%= button_to "Delete Image", gallery_image_path, method: :delete %>

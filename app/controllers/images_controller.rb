@@ -47,7 +47,7 @@ class ImagesController < ApplicationController
   private
 
   def image_params
-    params.require(:image).permit(:name, :url)
+    params.require(:image).permit(:name, :url, group_ids: [])
   end
 
   def load_gallery_from_url
