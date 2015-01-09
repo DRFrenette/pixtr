@@ -2,6 +2,9 @@
 
 <%= image_tag @image.url %>
 
+<div>
+  <p>This image has <%= @image.likes.count %> likes</p>
+
 <%= render "like_button", image: @image %>
 
 <%= form_for [@image, @comment] do |form| %>
